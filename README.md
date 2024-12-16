@@ -78,6 +78,8 @@ Ensure you have the following installed on your system:
    ```bash
    npm start
   The server will run on http://localhost:3000.
+6. **Postman Link to workspace to test the endpoints**
+https://warped-astronaut-661053.postman.co/workspace/GeekyAir-Assessment-Endpoints~3af2d44a-9659-42d3-b0d8-edaf6b66ee32/request/28422182-c1bca3b5-ca3b-4c0d-8f1f-c129ec78b29d
   
 ---
 # API Endpoints Documentation
@@ -133,38 +135,6 @@ Ensure you have the following installed on your system:
 - **GET /orders/report**: Export orders in CSV or XLSX format for a given date range.
 
 - **GET /menu/top-selling**: Export top 10 selling items in the last 30 days.
----
-## Folder Structure
-``` bash
-project/
-│
-├── routes/               # API route files
-│   ├── userRoutes.js     # User-related routes
-│   ├── menuRoutes.js     # Menu-related routes
-│   ├── orderRoutes.js    # Order-related routes
-│   └── reportRoutes.js   # Report-related routes
-│
-├── middleware/           # Middleware for authentication and authorization
-│   ├── authenticateUser.js
-│   ├── isAdmin.js
-│   └── isStaff.js
-│
-├── models/               # Sequelize models
-│   ├── User.js
-│   ├── MenuItem.js
-│   ├── Order.js
-│   └── OrderItems.js
-│
-├── seeders/              # Seeder files for populating the database
-│   └── seederDB.js
-│
-├── config/               # Configuration files
-│   └── database.js
-│
-├── .env                  # Environment variables
-├── index.js              # Main entry point
-├── package.json          # Dependencies and scripts
-└── README.md             # Documentation
 ---
 
 ## Endpoints Request and Responses
@@ -394,3 +364,34 @@ project/
       "file_url": "path_to_report_file"
     }
     ```
+## Folder Structure
+``` bash
+project/
+│
+├── routes/               # API route files
+│   ├── userRoutes.js     # User-related routes
+│   ├── menuRoutes.js     # Menu-related routes
+│   ├── orderRoutes.js    # Order-related routes
+│   └── reportRoutes.js   # Report-related routes
+│
+├── middleware/           # Middleware for authentication and authorization
+│   ├── authenticateUser.js
+│   ├── isAdmin.js
+│   └── isStaff.js
+│
+├── models/               # Sequelize models
+│   ├── User.js
+│   ├── MenuItem.js
+│   ├── Order.js
+│   └── OrderItems.js
+│
+├── seeders/              # Seeder files for populating the database
+│   └── seederDB.js
+│
+├── config/               # Configuration files
+│   └── database.js
+│
+├── .env                  # Environment variables
+├── index.js              # Main entry point
+├── package.json          # Dependencies and scripts
+└── README.md             # Documentation
