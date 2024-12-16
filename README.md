@@ -149,7 +149,7 @@ https://warped-astronaut-661053.postman.co/workspace/GeekyAir-Assessment-Endpoin
     {
       "username": "example_user",
       "password": "example_password",
-      "role": "admin" | "staff"
+      "role": "admin"  |  "staff"
     }
     ```
   - **Response**:
@@ -197,7 +197,7 @@ https://warped-astronaut-661053.postman.co/workspace/GeekyAir-Assessment-Endpoin
     ```
 
 - **Password Reset**  
-  - **PATCH** `/auth/reset-password/:token`  
+  - **PUT** `/auth/reset-password/:token`  
   - **Request Body**:
     ```json
     {
@@ -259,7 +259,7 @@ https://warped-astronaut-661053.postman.co/workspace/GeekyAir-Assessment-Endpoin
     ```
 
 - **Update Menu Item**  
-  - **PATCH** `/menu/:id`  
+  - **PUT** `/menu/:id`  
   - **Request Body**:
     ```json
     {
@@ -313,7 +313,7 @@ https://warped-astronaut-661053.postman.co/workspace/GeekyAir-Assessment-Endpoin
     ```
 
 - **Update Order Status (Admins Only)**  
-  - **PATCH** `/orders/:id`  
+  - **PUT** `/orders/:id`  
   - **Request Body**:
     ```json
     {
