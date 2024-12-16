@@ -292,7 +292,7 @@ https://warped-astronaut-661053.postman.co/workspace/GeekyAir-Assessment-Endpoin
 
 ### Order Management
 
-- **Create Order (Staff Only)**  
+- **Create Order (Admin Only)**  
   - **POST** `/orders`  
   - **Request Body**:
     ```json
