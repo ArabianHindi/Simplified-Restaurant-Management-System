@@ -165,3 +165,232 @@ project/
 ├── index.js              # Main entry point
 ├── package.json          # Dependencies and scripts
 └── README.md             # Documentation
+---
+
+## Endpoints Request and Responses
+
+### User Management
+
+- **Sign Up**  
+  - **POST** `/auth/signup`  
+  - **Request Body**:
+    ```json
+    {
+      "username": "example_user",
+      "password": "example_password",
+      "role": "admin" | "staff"
+    }
+    ```
+  - **Response**:
+    ```json
+    {
+      "message": "User signed up successfully.",
+      "user": {
+        "id": 1,
+        "username": "example_user",
+        "role": "staff"
+      }
+    }
+    ```
+
+- **Login**  
+  - **POST** `/auth/login`  
+  - **Request Body**:
+    ```json
+    {
+      "username": "example_user",
+      "password": "example_password"
+    }
+    ```
+  - **Response**:
+    ```json
+    {
+      "message": "Login successful.",
+      "token": "jwt_token_here"
+    }
+    ```
+
+- **Password Reset Request**  
+  - **POST** `/auth/reset-password`  
+  - **Request Body**:
+    ```json
+    {
+      "username": "example_user"
+    }
+    ```
+  - **Response**:
+    ```json
+    {
+      "message": "Password reset link sent successfully."
+    }
+    ```
+
+- **Password Reset**  
+  - **PATCH** `/auth/reset-password/:token`  
+  - **Request Body**:
+    ```json
+    {
+      "new_password": "new_secure_password"
+    }
+    ```
+  - **Response**:
+    ```json
+    {
+      "message": "Password reset successfully."
+    }
+    ```
+
+---
+
+### Menu Management (Admins Only)
+
+- **Create Menu Item**  
+  - **POST** `/menu`  
+  - **Request Body**:
+    ```json
+    {
+      "name": "Pizza",
+      "description": "Cheese Pizza",
+      "price": 9.99
+    }
+    ```
+  - **Response**:
+    ```json
+    {
+      "message": "Menu item created successfully.",
+      "menu": {
+        "id": 1,
+        "name": "Pizza",
+        "description": "Cheese Pizza",
+        "price": 9.99
+      }
+    }
+    ```
+
+- **Get All Menu Items**  
+  - **GET** `/menu`  
+  - **Response**:
+    ```json
+    [
+      {
+        "id": 1,
+        "name": "Pizza",
+        "description": "Cheese Pizza",
+        "price": 9.99
+      },
+      {
+        "id": 2,
+        "name": "Burger",
+        "description": "Beef Burger",
+        "price": 8.99
+      }
+    ]
+    ```
+
+- **Update Menu Item**  
+  - **PATCH** `/menu/:id`  
+  - **Request Body**:
+    ```json
+    {
+      "name": "Updated Pizza",
+      "price": 10.99
+    }
+    ```
+  - **Response**:
+    ```json
+    {
+      "message": "Menu item updated successfully.",
+      "menu": {
+        "id": 1,
+        "name": "Updated Pizza",
+        "price": 10.99
+      }
+    }
+    ```
+
+- **Delete Menu Item**  
+  - **DELETE** `/menu/:id`  
+  - **Response**:
+    ```json
+    {
+      "message": "Menu item deleted successfully."
+    }
+    ```
+
+---
+
+### Order Management
+
+- **Create Order (Staff Only)**  
+  - **POST** `/orders`  
+  - **Request Body**:
+    ```json
+    {
+      "created_by": "staff_username"
+    }
+    ```
+  - **Response**:
+    ```json
+    {
+      "message": "Order created successfully.",
+      "order": {
+        "id": 1,
+        "status": "pending",
+        "created_by": "staff_username"
+      }
+    }
+    ```
+
+- **Update Order Status (Admins Only)**  
+  - **PATCH** `/orders/:id`  
+  - **Request Body**:
+    ```json
+    {
+      "status": "completed"
+    }
+    ```
+  - **Response**:
+    ```json
+    {
+      "message": "Order updated successfully.",
+      "order": {
+        "id": 1,
+        "status": "completed"
+      }
+    }
+    ```
+
+- **Delete Pending Order (Admins Only)**  
+  - **DELETE** `/orders/:id`  
+  - **Response**:
+    ```json
+    {
+      "message": "Pending order deleted successfully."
+    }
+    ```
+
+---
+
+### Reporting (Admins Only)
+
+- **Export Orders**  
+  - **GET** `/reports/orders?start_date=YYYY-MM-DD&end_date=YYYY-MM-DD`  
+  - **Description**: Exports all orders within the provided date range as a CSV/XLSX file.  
+  - **Response**:
+    ```json
+    {
+      "message": "Report generated successfully.",
+      "file_url": "path_to_report_file"
+    }
+    ```
+
+- **Export Top-Selling Items**  
+  - **GET** `/reports/top-items`  
+  - **Description**: Exports the top 10 best-selling menu items in the last 30 days.  
+  - **Response**:
+    ```json
+    {
+      "message": "Report generated successfully.",
+      "file_url": "path_to_report_file"
+    }
+    ```
